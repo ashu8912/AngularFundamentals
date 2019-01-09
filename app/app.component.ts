@@ -25,11 +25,12 @@ interface Person{
  </div>
   {{name}}
   {{numberOne+numberTwo}}{{isHappy?':)':':('}}</div>
-  <h1>Passengers</h1>
+  <h3>Passengers</h3>
   <ul>
-  <li *ngFor="let passenger of passengers;let i=index">{{passenger.id}}
-  {{i}}{{passenger.name}}
-  {{passenger.checkedIn}}
+  <li *ngFor="let passenger of passengers;let i=index">
+  <span class="status" [ngClass]="{
+    'checked-in':passenger.checkedIn
+  }"></span>{{passenger.name}}
   </li>
   </ul>
   

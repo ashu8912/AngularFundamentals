@@ -1,3 +1,14 @@
 .app {
 background:red;
 }
+.status{
+    width:10px;
+    height:10px;
+    background:red;
+    border-radius:50%;
+    display:inline-block;
+    margin-right:0.2rem;
+&.checked-in{
+    background:green;
+}
+}
