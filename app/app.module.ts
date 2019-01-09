@@ -8,5 +8,4 @@ import { CommonModule } from '@angular/common';
   imports:[BrowserModule,CommonModule],
 bootstrap:[AppComponent]
 })
-
 export class AppModule{}
