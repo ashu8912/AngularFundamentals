@@ -5,7 +5,10 @@ import {Component} from '@angular/core';
   template:`<div>
   <h1 [innerHTML]="title"></h1>
   <h1>{{title}}</h1>
-  <input type="text" [value]="name" (input)="handleInput($event)"/>
+  <input type="text" placeholder="one way binding" 
+  [ngModel]="name" (ngModelChange)="handleInput($event)"/>
+ <input type="text" [(ngModel)]="name" 
+ placeholder="two way binding"/>
   {{name}}
   {{numberOne+numberTwo}}{{isHappy?':)':':('}}</div>`
 })
@@ -19,7 +22,7 @@ export class AppComponent{
   {
     this.title="First Angular Component";
   }
-  handleInput(event:any){
-  this.name=event.target.value;
+  handleInput(value:string){
+  this.name=value;
   }
 }
