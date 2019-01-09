@@ -3,7 +3,9 @@ import {Component} from '@angular/core';
   selector:'app-root',
   styleUrls:['app.component.scss'],
   template:`<div>
-  {{title}}{{numberOne+numberTwo}}{{isHappy?':)':':('}}</div>`
+  <h1 [innerHTML]="title"></h1>
+  <h1>{{title}}</h1>
+  {{numberOne+numberTwo}}{{isHappy?':)':':('}}</div>`
 })
 export class AppComponent{
   title:string;
