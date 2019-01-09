@@ -11,6 +11,9 @@ import {Component} from '@angular/core';
  placeholder="two way binding"/>
  <input type="text" [value]="name" (input)="handleInput(userName.value)" 
  #userName placeholder="template ref"/>
+ <div *ngIf="name.length">
+ Searching.... {{name}}
+ </div>
   {{name}}
   {{numberOne+numberTwo}}{{isHappy?':)':':('}}</div>`
 })
