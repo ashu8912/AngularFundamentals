@@ -9,6 +9,8 @@ import {Component} from '@angular/core';
   [ngModel]="name" (ngModelChange)="handleInput($event)"/>
  <input type="text" [(ngModel)]="name" 
  placeholder="two way binding"/>
+ <input type="text" [value]="name" (input)="handleInput(userName.value)" 
+ #userName placeholder="template ref"/>
   {{name}}
   {{numberOne+numberTwo}}{{isHappy?':)':':('}}</div>`
 })
