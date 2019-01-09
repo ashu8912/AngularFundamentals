@@ -4,6 +4,7 @@ interface Person{
   id:number;
   name:string;
   checkedIn:boolean;
+  checkInDate?:number;
 }
 
 
@@ -31,10 +32,12 @@ interface Person{
   <span class="status" [ngClass]="{
     'checked-in':passenger.checkedIn
   }"></span>{{passenger.name}}
+  <h3>CheckInDate {{
+    passenger.checkInDate?(passenger.checkInDate | date:'yMMMMd'):'Not Checked In'}}</h3>
+  <p>{{passenger | json}}</p>
   </li>
   </ul>
-  
-  `
+`
 
 })
 export class AppComponent{
@@ -46,15 +49,18 @@ export class AppComponent{
   passengers:Person[]=[{
     id:1,
     name:"Ashu",
-    checkedIn:true
+    checkedIn:true,
+    checkInDate:1489129012902
   },{
     id:2,
     name:"Todd",
-    checkedIn:true
+    checkedIn:true,
+    checkInDate:1432601212902
   },{
     id:1,
     name:"Bravo",
-    checkedIn:false
+    checkedIn:false,
+    checkInDate:148299999902
   },{
     id:1,
     name:"Kohli",
