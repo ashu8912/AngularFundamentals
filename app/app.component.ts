@@ -1,4 +1,13 @@
 import {Component} from '@angular/core';
+
+interface Person{
+  id:number;
+  name:string;
+  checkedIn:boolean;
+}
+
+
+
 @Component({
   selector:'app-root',
   styleUrls:['app.component.scss'],
@@ -15,7 +24,17 @@ import {Component} from '@angular/core';
  Searching.... {{name}}
  </div>
   {{name}}
-  {{numberOne+numberTwo}}{{isHappy?':)':':('}}</div>`
+  {{numberOne+numberTwo}}{{isHappy?':)':':('}}</div>
+  <h1>Passengers</h1>
+  <ul>
+  <li *ngFor="let passenger of passengers;let i=index">{{passenger.id}}
+  {{i}}{{passenger.name}}
+  {{passenger.checkedIn}}
+  </li>
+  </ul>
+  
+  `
+
 })
 export class AppComponent{
   title:string;
@@ -23,6 +42,23 @@ export class AppComponent{
   numberOne:number=1;
   numberTwo:number=2;
   isHappy:boolean=false;
+  passengers:Person[]=[{
+    id:1,
+    name:"Ashu",
+    checkedIn:true
+  },{
+    id:2,
+    name:"Todd",
+    checkedIn:true
+  },{
+    id:1,
+    name:"Bravo",
+    checkedIn:false
+  },{
+    id:1,
+    name:"Kohli",
+    checkedIn:false
+  }]
   constructor()
   {
     this.title="First Angular Component";
