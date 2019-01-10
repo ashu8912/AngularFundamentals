@@ -5,12 +5,15 @@ import { Person } from '../models/passenger.interface';
     styleUrls:['passenger-dashboard.component.scss'],
     template:`
     <div>
+    <h3>Passengers</h3>
     <passenger-count [items]="passengers"></passenger-count>
     <passenger-detail 
     *ngFor="let passenger of passengers"
-    [details]="passenger">
+    [details]="passenger"
+    (edit)="handleEdit($event)"
+    (remove)="handleRemove($event)">
     </passenger-detail>
-    <h3>Passengers</h3>
+    
     </div>`
 })
 export class PassengerDashboardComponent implements OnInit{
@@ -28,15 +31,28 @@ export class PassengerDashboardComponent implements OnInit{
             checkedIn:true,
             checkInDate:1432601212902
           },{
-            id:1,
+            id:3,
             name:"Bravo",
             checkedIn:false,
             checkInDate:148299999902
           },{
-            id:1,
+            id:4,
             name:"Kohli",
             checkedIn:false
           }]
     }
-    
+   handleRemove(event)
+   {
+       this.passengers=this.passengers.filter((passenger)=>passenger.id!==event.id
+       )
+
+       console.log(this.passengers);
+   } 
+   handleEdit(event)
+   {
+    const index=this.passengers.indexOf(event.id);
+    const passengers=[...this.passengers]
+    passengers[index]=event;
+     this.passengers=[...passengers];
+   }
 }
