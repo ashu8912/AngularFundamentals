@@ -1,4 +1,4 @@
-import {Component, Input,Output,EventEmitter} from '@angular/core';
+import {Component, Input,Output,OnChanges,EventEmitter} from '@angular/core';
 import { Person } from '../../models/passenger.interface';
 
 @Component({
@@ -22,7 +22,7 @@ import { Person } from '../../models/passenger.interface';
     `,
     styleUrls:['passenger-detail.component.scss']
 })
-export class PassengerDetailComponent{
+export class PassengerDetailComponent implements OnChanges{
 @Input()
 details:Person;
 editing:boolean=false;
@@ -30,8 +30,18 @@ editing:boolean=false;
 edit:EventEmitter<any>=new EventEmitter();
 @Output()
 remove:EventEmitter<any>=new EventEmitter(); 
+ngOnChanges(changes)
+{
+    if(changes.details)
+    {
+        this.details=Object.assign({},changes.details.currentValue);
+    }
+    console.log(changes);
+    
+}
 onPassengerNameChange(value){
-    this.details={...this.details,name:value}; 
+    this.details.name=value;
+    //={...this.details,name:value}; 
 }
 toggleEdit(){
     if(this.editing)

@@ -1,5 +1,6 @@
 import {Component,OnInit} from '@angular/core';
 import { Person } from '../models/passenger.interface';
+import { PassengerDashboardService } from '../passenger-dashboard.service';
 @Component({
     selector:'passenger-dashboard',
     styleUrls:['passenger-dashboard.component.scss'],
@@ -7,6 +8,9 @@ import { Person } from '../models/passenger.interface';
     <div>
     <h3>Passengers</h3>
     <passenger-count [items]="passengers"></passenger-count>
+    <div *ngFor="let passenger of passengers">
+    {{passenger.name}}
+    </div>
     <passenger-detail 
     *ngFor="let passenger of passengers"
     [details]="passenger"
@@ -18,28 +22,12 @@ import { Person } from '../models/passenger.interface';
 })
 export class PassengerDashboardComponent implements OnInit{
     passengers:Person[];
+    constructor(private passengerService:PassengerDashboardService){
+
+    }
     ngOnInit()
     {console.log('ngOninit life cycle hook');
-        this.passengers=[{
-            id:1,
-            name:"Ashu",
-            checkedIn:true,
-            checkInDate:1489129012902
-          },{
-            id:2,
-            name:"Todd",
-            checkedIn:true,
-            checkInDate:1432601212902
-          },{
-            id:3,
-            name:"Bravo",
-            checkedIn:false,
-            checkInDate:148299999902
-          },{
-            id:4,
-            name:"Kohli",
-            checkedIn:false
-          }]
+        this.passengers=this.passengerService.getPassengers();
     }
    handleRemove(event)
    {
@@ -49,10 +37,12 @@ export class PassengerDashboardComponent implements OnInit{
        console.log(this.passengers);
    } 
    handleEdit(event)
-   {
-    const index=this.passengers.indexOf(event.id);
+   {console.log(event);
+    const index=this.passengers.findIndex((passenger)=>passenger.id===event.id);
+    console.log(index);
     const passengers=[...this.passengers]
     passengers[index]=event;
      this.passengers=[...passengers];
+     console.log(this.passengers);
    }
 }
