@@ -5,17 +5,12 @@ import { Person } from '../models/passenger.interface';
     styleUrls:['passenger-dashboard.component.scss'],
     template:`
     <div>
+    <passenger-count [items]="passengers"></passenger-count>
+    <passenger-detail 
+    *ngFor="let passenger of passengers"
+    [details]="passenger">
+    </passenger-detail>
     <h3>Passengers</h3>
-  <ul>
-  <li *ngFor="let passenger of passengers;let i=index">
-  <span class="status" [ngClass]="{
-    'checked-in':passenger.checkedIn
-  }"></span>{{passenger.name}}
-  <h3>CheckInDate {{
-    passenger.checkInDate?(passenger.checkInDate | date:'yMMMMd'):'Not Checked In'}}</h3>
-  <p>{{passenger | json}}</p>
-  </li>
-  </ul>
     </div>`
 })
 export class PassengerDashboardComponent implements OnInit{
