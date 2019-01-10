@@ -21,13 +21,13 @@ import { PassengerDashboardService } from '../passenger-dashboard.service';
     </div>`
 })
 export class PassengerDashboardComponent implements OnInit{
-    passengers:Person[];
+    passengers:Person[]=[];
     constructor(private passengerService:PassengerDashboardService){
 
     }
     ngOnInit()
     {console.log('ngOninit life cycle hook');
-        this.passengers=this.passengerService.getPassengers();
+        this.passengerService.getPassengers().subscribe((data:Person[])=>this.passengers=data);
     }
    handleRemove(event)
    {
