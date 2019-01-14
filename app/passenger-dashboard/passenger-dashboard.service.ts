@@ -12,4 +12,14 @@ getPassengers():Observable<Person[]>{
         return response.json();
     })
 }
+updatePassenger(passenger):Observable<Person>{
+    return this.http.put(`${PASSENGER_API}/${passenger.id}`,passenger).map((response:Response)=>{
+        return response.json();
+    })
+}
+removePassenger(passenger):Observable<Person>{
+    return this.http.delete(`${PASSENGER_API}/${passenger.id}`).map((response:Response)=>{
+        return response.json();
+    })
+}
 }
