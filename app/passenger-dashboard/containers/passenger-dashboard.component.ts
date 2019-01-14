@@ -31,18 +31,20 @@ export class PassengerDashboardComponent implements OnInit{
     }
    handleRemove(event)
    {
-       this.passengers=this.passengers.filter((passenger)=>passenger.id!==event.id
-       )
-
-       console.log(this.passengers);
+       this.passengerService.removePassenger(event).subscribe((data:Person)=>{
+        this.passengers=this.passengers.filter((passenger)=>passenger.id!==event.id)
+       })
    } 
    handleEdit(event)
-   {console.log(event);
-    const index=this.passengers.findIndex((passenger)=>passenger.id===event.id);
-    console.log(index);
-    const passengers=[...this.passengers]
-    passengers[index]=event;
-     this.passengers=[...passengers];
-     console.log(this.passengers);
+   {
+    this.passengerService.updatePassenger(event).subscribe((data:Person)=>{
+        console.log(data);
+        const index=this.passengers.findIndex((passenger)=>passenger.id===data.id);
+        const passengers=[...this.passengers]
+        passengers[index]=data;
+         this.passengers=[...passengers];
+        
+    })
+    
    }
 }
