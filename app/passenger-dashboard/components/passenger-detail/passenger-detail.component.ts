@@ -19,6 +19,7 @@ import { Person } from '../../models/passenger.interface';
     <button (click)="toggleEdit()">{{editing?'Done':'Edit'}}</button>
     <button
     (click)="handleRemove()">Remove</button>
+    <button (click)="viewPassenger()">View Passenger</button>
     `,
     styleUrls:['passenger-detail.component.scss']
 })
@@ -27,9 +28,11 @@ export class PassengerDetailComponent implements OnChanges{
 details:Person;
 editing:boolean=false;
 @Output()
-edit:EventEmitter<any>=new EventEmitter();
+edit:EventEmitter<Person>=new EventEmitter();
 @Output()
-remove:EventEmitter<any>=new EventEmitter(); 
+remove:EventEmitter<Person>=new EventEmitter(); 
+@Output()
+view:EventEmitter<Person>=new EventEmitter();
 ngOnChanges(changes)
 {
     if(changes.details)
@@ -49,6 +52,9 @@ toggleEdit(){
         this.edit.emit(this.details);
     }
     this.editing=!this.editing;
+}
+viewPassenger(){
+this.view.emit(this.details);
 }
 handleRemove(){
 this.remove.emit(this.details);

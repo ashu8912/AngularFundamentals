@@ -5,7 +5,9 @@ import {Person} from '../../models/passenger.interface';
 import 'rxjs/add/operator/switchMap';
 @Component({
     selector:'passenger-view',
-    template:`<h1>Passenger View <passenger-form [detail]="passenger">
+    template:`<h1>
+    <button (click)="goBack()">&lsaquo; Go Back</button>
+    Passenger View <passenger-form [detail]="passenger">
     </passenger-form></h1>`,
     styleUrls:['passenger-view.component.scss']
 })
@@ -20,5 +22,8 @@ export class PassengerViewComponent implements OnInit{
         .subscribe((data:Person)=>{
             this.passenger=data;
            })
+    }
+    goBack(){
+        this.router.navigate(['/passengers']);
     }
 }
