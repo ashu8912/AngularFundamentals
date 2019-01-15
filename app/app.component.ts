@@ -1,17 +1,22 @@
 import {Component} from '@angular/core';
 
+
+interface navs{
+  link:string,
+  name:string,
+  exact:boolean
+}
 @Component({
   selector:'app-root',
   styleUrls:['app.component.scss'],
   template:`
   <div>
-  <a routerLink="/" routerLinkActive="active"
-  [routerLinkActiveOptions]="{exact:true}">
-  Home
+  <a *ngFor="let item of navs" 
+  [routerLink]="item.link" routerLinkActive="active"
+  [routerLinkActiveOptions]="{exact:item.exact}">
+  {{item.name}}
   </a>
-  <a routerLink="/404" routerLinkActive="active">
-  404
-  </a>
+  
   </div>
   <hr/>
   <router-outlet>
@@ -25,7 +30,15 @@ export class AppComponent{
   numberOne:number=1;
   numberTwo:number=2;
   isHappy:boolean=false;
-  
+  navs:navs[]=[{
+    link:'/',
+    exact:true,
+    name:'Home'
+  },{
+    link:'/404',
+    exact:false,
+    name:'404'
+  }]
   constructor()
   {
     this.title="First Angular Component";
