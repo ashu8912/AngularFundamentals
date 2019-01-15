@@ -3,22 +3,9 @@ import {Component} from '@angular/core';
 @Component({
   selector:'app-root',
   styleUrls:['app.component.scss'],
-  template:`<div>
-  <h1 [innerHTML]="title"></h1>
-  <h1>{{title}}</h1>
-  <input type="text" placeholder="one way binding" 
-  [ngModel]="name" (ngModelChange)="handleInput($event)"/>
- <input type="text" [(ngModel)]="name" 
- placeholder="two way binding"/>
- <input type="text" [value]="name" (input)="handleInput(userName.value)" 
- #userName placeholder="template ref"/>
- <div *ngIf="name.length">
- Searching.... {{name}}
- </div>
-  {{name}}
-  {{numberOne+numberTwo}}{{isHappy?':)':':('}}</div>
-  <passenger-dashboard></passenger-dashboard>
-`
+  template:`<router-outlet>
+  
+  </router-outlet>`
 
 })
 export class AppComponent{

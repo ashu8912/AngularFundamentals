@@ -17,7 +17,7 @@ import { PassengerDashboardService } from '../passenger-dashboard.service';
     (edit)="handleEdit($event)"
     (remove)="handleRemove($event)">
     </passenger-detail>
-    
+    <passenger-view></passenger-view>
     </div>`
 })
 export class PassengerDashboardComponent implements OnInit{
@@ -33,6 +33,8 @@ export class PassengerDashboardComponent implements OnInit{
    {
        this.passengerService.removePassenger(event).subscribe((data:Person)=>{
         this.passengers=this.passengers.filter((passenger)=>passenger.id!==event.id)
+       },(error:any)=>{
+           console.log("there is an error",error);
        })
    } 
    handleEdit(event)
