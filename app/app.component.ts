@@ -3,7 +3,16 @@ import {Component} from '@angular/core';
 @Component({
   selector:'app-root',
   styleUrls:['app.component.scss'],
-  template:`<router-outlet>
+  template:`
+  <div>
+  <a routerLink="/">
+  Home
+  </a>
+  <a routerLink="/404">
+  404
+  </a>
+  </div>
+  <router-outlet>
   
   </router-outlet>`
 
