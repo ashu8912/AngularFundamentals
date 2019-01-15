@@ -5,7 +5,8 @@ import {Component} from '@angular/core';
   styleUrls:['app.component.scss'],
   template:`
   <div>
-  <a routerLink="/" routerLinkActive="active">
+  <a routerLink="/" routerLinkActive="active"
+  [routerLinkActiveOptions]="{exact:true}">
   Home
   </a>
   <a routerLink="/404" routerLinkActive="active">
