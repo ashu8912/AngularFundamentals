@@ -1,3 +1,13 @@
 .app {
 background:red;
 }
+a{
+    color:#1d1404;
+    background:#a4a89d;
+    padding:10px;
+    font-size:21px;
+    &.active{
+        color:rgb(102, 9, 9);
+        background: #67468d;
+    }
+}
