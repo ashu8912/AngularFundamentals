@@ -17,7 +17,7 @@ import { PassengerDashboardService } from '../passenger-dashboard.service';
     (edit)="handleEdit($event)"
     (remove)="handleRemove($event)">
     </passenger-detail>
-    <passenger-view></passenger-view>
+    
     </div>`
 })
 export class PassengerDashboardComponent implements OnInit{
